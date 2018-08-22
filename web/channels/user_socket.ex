@@ -1,4 +1,4 @@
-defmodule Discuss.UserSocket do
+defmodule Mixshoulders.UserSocket do
   use Phoenix.Socket
 
   ## Channels
