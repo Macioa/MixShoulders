@@ -22,9 +22,8 @@ config :logger, level: :info
 
 config :mixshoulders, Mixshoulders.Repo,
   adapter: Ecto.Adapters.Postgres,
-  url: [scheme: "https", host: "mixshoulders.herokuapp.com", port: 443],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  pool_size: String.to_integer("10"),
+  url: System.get_env("DATABASE_URL"),
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
   ssl: true
 # Do not print debug messages in production
 
