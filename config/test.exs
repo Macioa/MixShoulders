@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :mixshoulders, Mixshoulders.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "ryanm",
+  password: "1234",
   database: "mixshoulders_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
