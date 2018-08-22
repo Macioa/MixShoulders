@@ -36,8 +36,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :mixshoulders, Mixshoulders.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "ryanm",
+  password: "1234",
   database: "mixshoulders_dev",
   hostname: "localhost",
   pool_size: 10
