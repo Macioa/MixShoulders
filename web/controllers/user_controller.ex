@@ -1,18 +1,33 @@
 defmodule Mixshoulders.UserController do
   use Mixshoulders.Web, :controller
+  #plug :scrub_params, "post" when action in [:create]
 
-  # def sign_in(conn, %{"password" => "password"}) do
-  #   user = %{id: "1"}
+  alias Mixshoulders.User
 
-  #   conn
-  #   |> Mixshoulders.Guardian.Plug.sign_in(user)
-  #   |> send_resp(204, "")
-  # end
+  def create(conn, %{"user"=>userparams}) do
+    %{"password" => password, "username" => username, "email" => email} = userparams
+    changeset = User.changeset(%User{}, %{username: username, password: password, email: email})
+
+    IO.inspect(changeset)
+    case Repo.insert(changeset) do
+      {:ok, post} -> IO.inspect(post)
+      {:error, changeset} ->
+        render conn, "register.html", changeset: changeset
+    end
+
+    conn
+    #|> Mixshoulders.Guardian.Plug.sign_in(user)
+    |> send_resp(204, "")
+  end
+
+  def register(conn, _params) do
+    changeset = Mixshoulders.User.changeset(%Mixshoulders.User{}, %{})
+    render conn, "register.html", changeset: changeset
+    # send_resp(conn, 401, Poison.encode!(%{error: "Incorrect password"}))
+  end
 
   def sign_in(conn, _params) do
-    IO.inspect('hit')
     render conn, "signin.html"
-    # send_resp(conn, 401, Poison.encode!(%{error: "Incorrect password"}))
   end
 
   def sign_out(conn, _params) do

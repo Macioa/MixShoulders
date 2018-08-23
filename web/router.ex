@@ -47,7 +47,10 @@ defmodule Mixshoulders.Router do
   scope "/", Mixshoulders do
     pipe_through :browser
 
-    get "/login", UserController, :sign_in
+    get "/register", UserController, :register
+    post "/create", UserController, :create
+
+    get "/login", UserController, :login
     post "/login", UserController, :login
 
     post "/logout", UserController, :logout
