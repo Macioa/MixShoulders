@@ -17,6 +17,12 @@ config :mixshoulders, Mixshoulders.Endpoint,
   pubsub: [name: Mixshoulders.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+# Configure Guardian key
+# config :guardian, Guardian,
+#   issuer: "MixShoulders",
+#   secret_key: "Gi7ijJvMjryErf7+FoMlyR6mToZSNhFBi14aCJjwVPgbPbJTgEtYD6yks/YOgxXI",
+#   serializer: MixShoulders.Guardian
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

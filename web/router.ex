@@ -17,13 +17,13 @@ defmodule Mixshoulders.Router do
     plug :fetch_session
   end
 
-  pipeline :authorized do
-    plug :fetch_session
-    plug Guardian.Plug.Pipeline, module: GuardianDemo.Guardian,
-      error_handler: GuardianDemo.AuthErrorHandler
-    plug Guardian.Plug.VerifySession
-    plug Guardian.Plug.LoadResource
-  end
+  # pipeline :authorized do
+  #   plug :fetch_session
+  #   plug Guardian.Plug.Pipeline, module: GuardianDemo.Guardian,
+  #     error_handler: GuardianDemo.AuthErrorHandler
+  #   plug Guardian.Plug.VerifySession
+  #   plug Guardian.Plug.LoadResource
+  # end
 
   # scope "/api", GuardianDemoWeb do
   #   pipe_through :api
@@ -49,6 +49,8 @@ defmodule Mixshoulders.Router do
 
     get "/register", UserController, :register
     post "/create", UserController, :create
+
+    get "/add", ShoulderController, :add
 
     get "/login", UserController, :login
     post "/login", UserController, :login

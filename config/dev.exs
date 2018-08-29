@@ -24,7 +24,13 @@ config :mixshoulders, Mixshoulders.Endpoint,
       ~r{web/views/.*(ex)$},
       ~r{web/templates/.*(eex)$}
     ]
-  ]
+  ],
+  #config :mixshoulders, Mixshoulders.Endpoint,
+  url: [host: "localhost"],
+  secret_key_base: "btX9QtZV6z2Lcl/AuSYcg2FZ3+K811UP78a2LjgCg1vHH0vmoYk9OZVxMr0L8XwO",
+  render_errors: [view: Mixshoulders.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Mixshoulders.PubSub,
+           adapter: Phoenix.PubSub.PG2]
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
@@ -41,3 +47,13 @@ config :mixshoulders, Mixshoulders.Repo,
   database: "mixshoulders_dev",
   hostname: "localhost",
   pool_size: 10
+
+# Configure guardian
+# config :mixshoulders, MixShoulders.Guardian,
+#   issuer: MixShoulders,
+#   secret_key: "Gi7ijJvMjryErf7+FoMlyR6mToZSNhFBi14aCJjwVPgbPbJTgEtYD6yks/YOgxXI",
+#   serializer: MixShoulders.Guardian
+
+# config :mixshoulders, MixShoulders.Guardian,
+#   issuer: "guardian_demo",
+#   secret_key: {:system, "Gi7ijJvMjryErf7+FoMlyR6mToZSNhFBi14aCJjwVPgbPbJTgEtYD6yks/YOgxXI"}

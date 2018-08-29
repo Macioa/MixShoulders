@@ -1,4 +1,5 @@
 defmodule Mixshoulders.UserController do
+  import Plug.Conn
   use Mixshoulders.Web, :controller
   #plug :scrub_params, "post" when action in [:create]
 
@@ -7,12 +8,22 @@ defmodule Mixshoulders.UserController do
   def create(conn, %{"user"=>userparams}) do
     %{"password" => password, "username" => username, "email" => email} = userparams
     changeset = User.changeset(%User{}, %{username: username, password: password, email: email})
-
-    IO.inspect(changeset)
-    case Repo.insert(changeset) do
-      {:ok, post} -> IO.inspect(post)
+    message = get_session(conn, :message)
+    IO.inspect(message)
+    case Repo.insert changeset do
+      {:ok, _post} ->
+        conn
+          |> put_flash(:info, "Account created")
+          |> put_session(:message, "test")
+          #|> assign(:message, "test")
+          |> configure_session(renew: true)
+          |> redirect(to: "/add")
+          #|> Mixshoulders.Guardian.Plug.sign_in(post)
+        #IO.inspect(conn)
       {:error, changeset} ->
-        render conn, "register.html", changeset: changeset
+        IO.inspect(changeset)
+        conn
+          |>render("register.html", changeset: changeset)
     end
 
     conn

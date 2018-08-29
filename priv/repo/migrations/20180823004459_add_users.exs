@@ -11,10 +11,20 @@ defmodule Mixshoulders.Repo.Migrations.AddUsers do
 
       timestamps()
     end
+
+    create unique_index(:users, :username, name: :users_username_index)
+    create unique_index(:users, :username, name: :users_email_index)
   end
 
   def down do
     drop table(:users)
   end
+
+  def change do
+    drop table(:users)
+
+    #AddUsers.up()
+  end
+
 
 end

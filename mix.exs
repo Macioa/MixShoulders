@@ -19,7 +19,7 @@ defmodule Mixshoulders.Mixfile do
   def application do
     [mod: {Mixshoulders, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex]]#:guardian
   end
 
   # Specifies which paths to compile per environment.
@@ -37,13 +37,14 @@ defmodule Mixshoulders.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
-     {:guardian, "~> 1.0-beta"},
+     #{:guardian, "~> 1.0-beta"},
      {:cowboy, "~> 1.0"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
   # For example, to create, migrate and run the seeds file at once:
   #
+
   #     $ mix ecto.setup
   #
   # See the documentation for `Mix` for more info on aliases.
