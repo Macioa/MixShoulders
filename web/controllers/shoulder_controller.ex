@@ -20,15 +20,13 @@ defmodule Mixshoulders.ShoulderController do
 
   def make(conn, %{"shoulder"=>shoulderparams}) do
     %{"name" => name, "dob" => dob, "contributions" => contributions, "infolink" => infolink} = shoulderparams
-    changeset = Shoulders.changeset(%Shoulder{}, %{name: name, dob: dob, contributions: contributions, infolink: infolink})
+    changeset = Shoulder.changeset(%Shoulder{}, %{name: name, dob: dob, contributions: contributions, infolink: infolink})
     case Repo.insert changeset do
       {:ok, _post} ->
         conn
           |> put_flash(:info, "Shoulder created")
           |> configure_session(renew: true)
           |> redirect(to: "/add")
-          #|> Mixshoulders.Guardian.Plug.sign_in(post)
-        #IO.inspect(conn)
       {:error, changeset} ->
         IO.inspect(changeset)
         conn

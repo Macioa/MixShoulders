@@ -51,6 +51,7 @@ defmodule Mixshoulders.Router do
     post "/create", UserController, :create
 
     get "/add", ShoulderController, :add
+    post "/make", ShoulderController, :make
 
     get "/login", UserController, :login
     post "/login", UserController, :login

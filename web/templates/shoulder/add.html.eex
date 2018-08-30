@@ -1,6 +1,6 @@
 <h1>Register</h1>
 
-<%= form_for @changeset, user_path(@conn, :make), fn f -> %>
+<%= form_for @changeset, shoulder_path(@conn, :make), fn f -> %>
     <div class='login-form'>
         <%= text_input f, :name, placeholder: "Name", class: "form-control" %>
         <%= error_tag f, :name%>

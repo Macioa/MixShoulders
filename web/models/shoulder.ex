@@ -13,8 +13,9 @@ defmodule Mixshoulders.Shoulder do
 
   def changeset(struct, params \\ %{}) do
     struct
+    |> cast(params, [:name, :dob, :contributions, :infolink])
     |> validate_required(:name)
-    |> unique_constraint(:name)
+    |> unique_constraint(:name, name: :shoulders_name_index)
     #|> validate_format(:email, ~r/@/)
   end
 
