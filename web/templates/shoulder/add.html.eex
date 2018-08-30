@@ -1,1 +1,18 @@
-<h1>Page loaded</h1>
+<h1>Register</h1>
+
+<%= form_for @changeset, user_path(@conn, :make), fn f -> %>
+    <div class='login-form'>
+        <%= text_input f, :name, placeholder: "Name", class: "form-control" %>
+        <%= error_tag f, :name%>
+        <%= text_input f, :dob, placeholder: "Date of Birth", class: "form-control" %>
+        <%= error_tag f, :dob%>
+        <br/>
+        <%= textarea f, :contributions, placeholder: "Contributions", class: "form-control" %>
+        <%= error_tag f, :contributions%> 
+        <br/>
+        <%= text_input f, :infolink, placeholder: "More info URL", class: "form-control" %>
+        <%= error_tag f, :infolink%> 
+        <br/>
+        <%= submit "Create", class: "btn btn-primary"%>
+    </div>
+<% end %>
