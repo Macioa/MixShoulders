@@ -4,11 +4,6 @@ defmodule Mixshoulders.ShoulderController do
 
   alias Mixshoulders.Shoulder
 
-  # def add(conn, _params) do
-  #   #IO.Inpsect(conn)
-  #   #render conn, "add.html"
-  # end
-
   def add(conn, _params) do
     changeset = Mixshoulders.Shoulder.changeset(%Mixshoulders.Shoulder{}, %{})
     if get_session(conn, :message) do
@@ -32,6 +27,16 @@ defmodule Mixshoulders.ShoulderController do
         conn
           |>render("add.html", changeset: changeset)
     end
+  end
+
+  def index(conn, _params) do
+    shoulders = Repo.all(Shoulder)
+    render conn, "index.html", shoulders: shoulders
+  end
+
+  def show(conn, %{"id" => shoulder_id}) do
+    shoulder = Repo.get(Shoulder, shoulder_id)
+    render conn, "show.html", shoulder: shoulder
   end
 
 

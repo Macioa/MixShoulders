@@ -17,7 +17,7 @@ defmodule Mixshoulders.UserController do
           |> put_session(:message, "test")
           #|> assign(:message, "test")
           |> configure_session(renew: true)
-          |> redirect(to: "/add")
+          |> redirect(to: "/index")
           #|> Mixshoulders.Guardian.Plug.sign_in(post)
         #IO.inspect(conn)
       {:error, changeset} ->

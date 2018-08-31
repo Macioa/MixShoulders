@@ -1,0 +1,18 @@
+
+<h5>Shoulders</h5>
+
+<ul class="collection">
+  <%= for shoulder <- @shoulders do %>
+    <li class="collection-item">
+      <%= link shoulder.name, to: shoulder_path(@conn, :show) %>
+
+    </li>
+  <% end %>
+</ul>
+
+<div class="fixed-action-btn">
+  <%= link to: shoulder_path(@conn, :add), class: "btn-floating btn-large waves-effect waves-light red" do %>
+    <i class="material-icons">add</i>
+  <% end %>
+  </a>
+</div>

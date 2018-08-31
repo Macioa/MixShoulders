@@ -1,4 +1,4 @@
-<h1>Register</h1>
+<h1>Add Shoulders</h1>
 
 <%= form_for @changeset, shoulder_path(@conn, :make), fn f -> %>
     <div class='login-form'>
