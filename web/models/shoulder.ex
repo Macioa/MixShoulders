@@ -6,6 +6,7 @@ defmodule Mixshoulders.Shoulder do
     field :dob, :string
     field :contributions, :string
     field :infolink, :string
+    belongs_to :user, Mixshoulders.User
 
 
     timestamps()
