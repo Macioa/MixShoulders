@@ -34,9 +34,9 @@ defmodule Mixshoulders.ShoulderController do
     render conn, "index.html", shoulders: shoulders
   end
 
-  def show(conn, %{"id" => shoulder_id}) do
-    shoulder = Repo.get(Shoulder, shoulder_id)
-    render conn, "show.html", shoulder: shoulder
+  def show(conn, _params) do
+
+    render conn, "show.html"#, shoulder: shoulder
   end
 
 
