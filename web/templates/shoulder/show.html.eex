@@ -1,0 +1,7 @@
+<h2><a href="<%=@shoulder.infolink%>"><%=@shoulder.name%></a></h2>
+<h4><%=@shoulder.dob%></h4>
+<br>
+<p><%=@shoulder.contributions%>
+<br><br><br>
+ 
+<%=link("delete", to: "/"<>Kernel.inspect(@shoulder.id), method: :delete)%>

@@ -4,7 +4,7 @@
 <ul class="collection">
   <%= for shoulder <- @shoulders do %>
     <li class="collection-item">
-      <%= link shoulder.name, to: shoulder_path(@conn, :show) %>
+      <%= link shoulder.name, to: shoulder_path(@conn, :show, shoulder.id) %>
 
     </li>
   <% end %>

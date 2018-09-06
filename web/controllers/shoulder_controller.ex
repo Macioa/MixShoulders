@@ -13,7 +13,9 @@ defmodule Mixshoulders.ShoulderController do
     end
   end
 
-  def make(conn, %{"shoulder"=>shoulderparams}) do
+  def make(conn, params) do
+    IO.inspect(params)
+    %{"shoulder"=>shoulderparams}=params
     %{"name" => name, "dob" => dob, "contributions" => contributions, "infolink" => infolink} = shoulderparams
     changeset = Shoulder.changeset(%Shoulder{}, %{name: name, dob: dob, contributions: contributions, infolink: infolink})
     case Repo.insert changeset do
@@ -34,9 +36,14 @@ defmodule Mixshoulders.ShoulderController do
     render conn, "index.html", shoulders: shoulders
   end
 
-  def show(conn, _params) do
+  def show(conn, %{"id" => shoulder_id}) do
+    shoulder = Repo.get!(Shoulder, shoulder_id)
+    render conn, "show.html", shoulder: shoulder
+  end
 
-    render conn, "show.html"#, shoulder: shoulder
+  def delete(conn, %{"id" => shoulder_id}) do
+    Repo.get!(Shoulder, shoulder_id) |> Repo.delete!
+    redirect(conn, to: "/index")
   end
 
 
