@@ -42,8 +42,12 @@ defmodule Mixshoulders.ShoulderController do
   end
 
   def delete(conn, %{"id" => shoulder_id}) do
-    Repo.get!(Shoulder, shoulder_id) |> Repo.delete!
-    redirect(conn, to: "/index")
+    if(get_session(conn, :message)) do
+      Repo.get!(Shoulder, shoulder_id) |> Repo.delete!
+      redirect(conn, to: "/index")
+      else
+      redirect(conn, to: "/register")
+    end
   end
 
 
